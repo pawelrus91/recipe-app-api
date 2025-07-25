@@ -20,12 +20,12 @@ RUN python -m venv /py && \
     if [ "$DEV" = "true" ]; then \
     /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
-    rm -rf /tmp && \
+    rm -f /tmp/requirements*.txt && \
+    chmod 1777 /tmp && \
     apk del .tmp-build-deps && \
-    adduser \
-    --disabled-password \
-    --no-create-home \
-    django-user
+    adduser --disabled-password --home /home/django-user django-user
+
+RUN mkdir -p /tmp/.X11-unix && chmod 1777 /tmp /tmp/.X11-unix
 
 ENV PATH="/py/bin:$PATH"
 USER django-user
