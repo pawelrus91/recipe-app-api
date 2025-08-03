@@ -1,5 +1,5 @@
 """
-Tests for th recipe APIs.
+Tests for the recipe APIs.
 """
 from decimal import Decimal
 
@@ -19,7 +19,6 @@ from recipe.serializers import (
 
 
 RECIPES_URL = reverse('recipe:recipe-list')
-# RECIPES_URL
 
 
 def detail_url(recipe_id):
