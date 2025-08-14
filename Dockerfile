@@ -23,7 +23,11 @@ RUN python -m venv /py && \
     rm -f /tmp/requirements*.txt && \
     chmod 1777 /tmp && \
     apk del .tmp-build-deps && \
-    adduser --disabled-password --home /home/django-user django-user
+    adduser --disabled-password --home /home/django-user django-user && \
+    mkdir -p /vol/web/media && \
+    mkdir -p /vol/web/static && \
+    chown -R django-user:django-user /vol && \
+    chmod -R 775 /vol
 
 RUN mkdir -p /tmp/.X11-unix && chmod 1777 /tmp /tmp/.X11-unix
 
